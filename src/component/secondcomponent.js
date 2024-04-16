@@ -2,9 +2,7 @@ import React from 'react'
 import {connect} from "react-redux"
 const SecondComponent = (props) => {
   return (
-    <div>{
-        props.state
-    }</div>
+    <div></div>
   )
 }
 

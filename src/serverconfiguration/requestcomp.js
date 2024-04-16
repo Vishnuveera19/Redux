@@ -6,3 +6,8 @@ export async  function getRequest(url,controller)
    
 
 }
+
+export async function postRequest(url,controller,data)
+ { 
+  return await axios.post(url+controller,data)
+ }

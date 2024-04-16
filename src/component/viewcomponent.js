@@ -1,21 +1,47 @@
 import React from 'react'
 import {connect} from "react-redux"
 import { addEntity,viewById } from '../reduxcomp/actions/actionfunctions'
+import { PAYMEMPLOYEE } from '../serverconfiguration/controllers'
+import PaymEmployeeForm from '../components/paymEmployeeForm'
 const ViewComponent = (props) => {
-    console.log(props.state)
+  
   return (
     <div>
 
         <button 
         onClick={()=>{
-   props.dispatch(viewById(""))
+
+            var obj={
+              value:"",
+              controller:PAYMEMPLOYEE
+            }
+   props.dispatch(viewById(obj))
         }}
-        >Change State to Add</button>
-     {
-        props.state.map((e)=>{
-            return <li>{e.accountType}</li>
-        })
-     }
+        >Change State to View</button>
+       {/*
+  
+        console.log(props.state.map((e)=>{
+          if(typeof(e)!=Array)
+          {
+                    console.log(JSON.stringify(e)+" attrib")
+                    console.log(e.pnCompanyId)
+                    console.log(e.employeeFirstName)
+          }
+        }))
+      */
+              props.state.map((e)=>{
+                console.log(e)
+                return <li key={e}>{e.pnCompanyId} {e.employeeFirstName}
+                {
+                  e.paymEmpDeductions.map((p)=>{
+                    return <li>{p}</li>
+                  })
+                }
+                </li>
+              })
+      
+      }  
+      <PaymEmployeeForm/>
     </div>
   )
 }

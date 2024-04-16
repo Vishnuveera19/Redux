@@ -14,8 +14,12 @@ export default function entityReducer(state=initialState,action)
                 state=action.payload
             return state
             case VIEWBYID:
+
                 state=action.payload
-        
+               /* state.map((e)=>{
+                    console.log(e.employeeFirstName)
+                })
+               */
                 return state
             default:
                 return initialState
